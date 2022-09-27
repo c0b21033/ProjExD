@@ -1,16 +1,16 @@
 from random import randint, shuffle
 import datetime
 
-def shutudai():
+def shutudai(): #問題を出題する関数
     global questionnum, answernum,questions, Maxnum
-    questionnum = randint(7, 10)
+    questionnum = randint(7, 13)
     questions = set()
     answernum = randint(1, 4)
     for i in range(questionnum):
         questions.add(chr(randint(65, 90)))
     print(f"対象文字\n{display(questions)}")
 
-def kaitou():
+def kaitou(): #解答を受け付けて、結果を出力する関数
     global counts, end, questions
     counts += 1
     answers = []
@@ -42,14 +42,14 @@ def kaitou():
     if Maxnum == counts:
         end = True
 
-def display(lis):
+def display(lis):#アルファベットを表示する関数
     result = ""
     for i in lis:
         result += i
         result += " "
     return result
     
-def main():
+def main():#クイズのプログラム全体を行う関数
     shutudai()
     kaitou()
 
