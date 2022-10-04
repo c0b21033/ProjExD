@@ -12,6 +12,7 @@ x = 0
 y = 0
 for n in range(9, -1, -1):
     button = tk.Button(root, text=f"{n}", font=("Times New Roman", 30),  width=4, height=2)
+    button.bind("<1>", button_click)
     button.grid(row = y,column = x)
     x += 1
     if x % 3 == 0:
