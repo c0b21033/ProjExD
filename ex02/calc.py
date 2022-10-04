@@ -8,7 +8,10 @@ def button_click(event):
     n = entry.get()
     board_shuffle()
     if txt == "=":
-        result = eval(n)
+        try:
+            result = eval(n)
+        except:
+            result = 0
         entry.delete(0, tk.END)
         entry.insert(tk.END, result)
     elif txt == "back":
@@ -42,20 +45,6 @@ def board_shuffle():
         if x % 5 == 0:
             x = 0
             y += 1
-# for n in range(9, -3, -1):
-#     if n < 0:
-#         if n == -1:
-#             mark = "+"
-#         elif n == -2:
-#             mark = "="
-#     else:
-#         mark = n
-#     button = tk.Button(root, text=f"{mark}", font=("Times New Roman", 30),  width=4, height=2)
-#     button.bind("<1>", button_click)
-#     button.grid(row = y+1,column = x)
-#     x += 1
-#     if x % 3 == 0:
-#         x = 0
-#         y += 1
+
 board_shuffle()
 root.mainloop()
