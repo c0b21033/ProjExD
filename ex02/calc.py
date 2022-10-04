@@ -33,7 +33,11 @@ def board_shuffle():
     x = 0
     y = 0
     mark = ""
-    numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "+", "=", "-", "*", "/", "back", "del", "del", "del", "del",]
+    num = list(range(10))
+    marks =["+", "=", "-", "*", "/", "back", "del", "del", "del", "del"]
+    num.extend(marks)
+    numbers = num
+    print(numbers)
     numbers2 = deepcopy(numbers)
     for i,num in enumerate(numbers, 1):
         n = randint(0, len(numbers2)-1)
