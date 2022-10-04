@@ -5,7 +5,7 @@ from turtle import right
 def button_click(event):
     btn = event.widget #どのボタンが押されたか
     txt = btn["text"] #押されたボタンのtext属性を返す　（クラス）
-    tkm.showinfo(txt, f"{txt}ボタンが押されました")
+    entry.insert(tk.END, txt)
 root = tk.Tk()
 
 root.geometry("300x600")
