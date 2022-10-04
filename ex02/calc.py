@@ -1,7 +1,5 @@
-from re import X
 import tkinter as tk
 import tkinter.messagebox as tkm
-from turtle import right
 def button_click(event):
     btn = event.widget #どのボタンが押されたか
     txt = btn["text"] #押されたボタンのtext属性を返す　（クラス）
