@@ -6,11 +6,28 @@ root.title("迷路ゲーム")
 def key_down(event):
     global key
     key = event.keysym
-    print(key)
 
 def key_up(event):
     global key
     key = ""
+
+# def main_loop():
+#     if key == "Up":
+#     if key == "Down":
+#     if key == "Left":
+#     if key == "Right":
+def main_proc():
+    global cx, cy, key
+    if key == "Up":
+        cy-=20
+    if key == "Right":
+        cx+=20
+    if key == "Left":
+        cx-=20
+    if key == "Down":
+        cy+=20
+    c.coords("tori", cx, cy)
+    root.after(20, main_proc)
 
 cx, cy = 300, 400
 c = tk.Canvas(root,width = 1500, height =900, bg = "black")
@@ -20,4 +37,5 @@ c.create_image(cx, cy, image=tori, tag="tori")
 key = ""
 root.bind("<KeyPress>", key_down)
 root.bind("<KeyRelease>", key_up)
+main_proc()
 root.mainloop()
