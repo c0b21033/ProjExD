@@ -38,8 +38,7 @@ def main_proc():
     if key == "Right" and maze[my][mx+1] == 0 or maze[my][mx+1] == 2:
         mx+=1
         if maze[my][mx] == 2:#進む先がゴールだったら
-            if maze[my][mx] == 2:
-                goal_flag=True#ゴール判定をTrueにする
+            goal_flag=True#ゴール判定をTrueにする
                 
     if key == "Left" and maze[my][mx-1]== 0:
         mx-=1
