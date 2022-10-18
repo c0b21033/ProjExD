@@ -35,14 +35,14 @@ def main_proc():
         return
     if key == "Up" and maze[my-1][mx]== 0:
         my-=1
-    if key == "Right" and maze[my][mx+1] == 0 or maze[my][mx+1] == 2:
+    if key == "Right" and maze[my][mx+1] != 1:
         mx+=1
         if maze[my][mx] == 2:#進む先がゴールだったら
             goal_flag=True#ゴール判定をTrueにする
                 
     if key == "Left" and maze[my][mx-1]== 0:
         mx-=1
-    if key == "Down" and maze[my+1][mx]== 0 or maze[my+1][mx] == 2:
+    if key == "Down" and maze[my+1][mx]!= 1:
         my+=1
         if maze[my][mx] == 2:#進む先がゴールなら
             goal_flag=True
