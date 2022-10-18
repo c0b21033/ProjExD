@@ -11,24 +11,21 @@ def key_up(event):
     global key
     key = ""
 
-# def main_loop():
-#     if key == "Up":
-#     if key == "Down":
-#     if key == "Left":
-#     if key == "Right":
 def main_proc():
-    global cx, cy, key
+    global cx, cy, key, mx, my
     if key == "Up":
-        cy-=20
+        my-=1
     if key == "Right":
-        cx+=20
+        mx+=1
     if key == "Left":
-        cx-=20
+        mx-=1
     if key == "Down":
-        cy+=20
+        my+=1
+    cx, cy = mx*100+50, my*100+50
     c.coords("tori", cx, cy)
     root.after(100, main_proc)
 
+mx, my = 1, 1
 cx, cy = 300, 400
 c = tk.Canvas(root,width = 1500, height =900, bg = "black")
 c.pack()
