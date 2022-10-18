@@ -12,16 +12,18 @@ def key_up(event):
     key = ""
 
 def main_proc():
-    global cx, cy, key, mx, my
-    if key == "Up":
+    global cx, cy, mx, my, key
+    if key == "Up" and maze[my-1][mx]== 0:
         my-=1
-    if key == "Right":
+    if key == "Right" and maze[my][mx+1] == 0:
         mx+=1
-    if key == "Left":
+    if key == "Left" and maze[my][mx-1]== 0:
         mx-=1
-    if key == "Down":
+    if key == "Down" and maze[my+1][mx]== 0:
         my+=1
-    cx, cy = mx*100+50, my*100+50
+    cx = mx*100+50
+    cy = my*100+50
+    
     c.coords("tori", cx, cy)
     root.after(100, main_proc)
 
