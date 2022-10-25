@@ -29,12 +29,15 @@ def main():
     fonto = pg.font.Font(None, 80)
     txt = fonto.render("LIFE", True, "BLACK")
     
+    dif1 = 60
+    dif2 = 70
+
     while True:
         #それぞれ向いている方向ごとのシールドの描写位置を格納
-        shield_pos = [[(tori_rect.centerx-60, tori_rect.centery-70), (tori_rect.centerx-60, tori_rect.centery+70)],
-                  [(tori_rect.centerx+60, tori_rect.centery-70), (tori_rect.centerx+60, tori_rect.centery+70)],
-                  [(tori_rect.centerx-70, tori_rect.centery-60), (tori_rect.centerx+70, tori_rect.centery-60)],
-                  [(tori_rect.centerx-70, tori_rect.centery+60), (tori_rect.centerx+70, tori_rect.centery+60)]]
+        shield_pos = [[(tori_rect.centerx-dif1, tori_rect.centery-dif2), (tori_rect.centerx-dif1, tori_rect.centery+dif2)],
+                  [(tori_rect.centerx+dif1, tori_rect.centery-dif2), (tori_rect.centerx+dif1, tori_rect.centery+dif2)],
+                  [(tori_rect.centerx-dif2, tori_rect.centery-dif1), (tori_rect.centerx+dif2, tori_rect.centery-dif1)],
+                  [(tori_rect.centerx-dif2, tori_rect.centery+dif1), (tori_rect.centerx+dif2, tori_rect.centery+dif1)]]
         
         #こうかとんの当たり判定
         tori_circle = pg.draw.circle(screen, (0, 0, 0), (tori_rect.centerx+10, tori_rect.centery), 40)
