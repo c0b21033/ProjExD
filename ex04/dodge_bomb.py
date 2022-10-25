@@ -8,6 +8,7 @@ def main():
     bg_sfc = pg.image.load("ex04/fig/pg_bg.jpg")
     bg_rct = bg_sfc.get_rect()
     clock = pg.time.Clock()
+    vx, vy = 1, 1
 
     tori_sfc = pg.image.load("ex04/fig/6.png")
     tori_sfc = pg.transform.rotozoom(tori_sfc, 0, 2.0)
@@ -34,8 +35,12 @@ def main():
         if key_states[pg.K_RIGHT]:
             tori_rct.centerx+=1
         scrn_sfc.blit(tori_sfc, tori_rct)
+        bomb_rct.move_ip(vx, vy)
         scrn_sfc.blit(bomb_sfc, bomb_rct)
+        
+        
         pg.display.update()
+
         
 if __name__ == "__main__":
     pg.init()
