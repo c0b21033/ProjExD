@@ -5,7 +5,8 @@ from random import randint
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((1200, 600))
-
+    screen_rct = screen.get_rect()
+    w, h = screen_rct.width, screen_rct.height
     tori = pg.image.load("ex04/fig/6.png") #こうかとん作成
     tori = pg.transform.rotozoom(tori, 0, 2.0)
     tori_rect = tori.get_rect()
@@ -13,9 +14,9 @@ def main():
 
     background = pg.image.load("ex04/fig/pg_bg.jpg")
 
-    vx, vy = randint(0, 1200), randint(0, 600) #弾の座標１
-    vx2, vy2 = randint(0, 1200), randint(0, 600) #弾の座標２
-    vx3, vy3 = randint(0, 1200), randint(0, 600) #弾の座標３
+    vx, vy = randint(0, w), randint(0, h) #弾の座標１
+    vx2, vy2 = randint(0, w), randint(0, h) #弾の座標２
+    vx3, vy3 = randint(0, w), randint(0, h) #弾の座標３
     xspeed, yspeed = 1, 1 #１個目の弾のスピード
     xspeed2, yspeed2 = 1, 1 #２個目の弾のスピード
     xspeed3, yspeed3 = 1, 1  #３個目の弾のスピード
@@ -59,11 +60,11 @@ def main():
         for i, j in zip(lis_pos, lis_speed):#iは場所[vx, vy],jはスピード[xspeed, yspeed]
             i[0] += j[0]
             i[1] += j[1]
-            if i[0] < 0 or i[0] > 1200:#弾が画面外にでたら(x軸)
+            if i[0] < 0 or i[0] > w:#弾が画面外にでたら(x軸)
                 j[0] *= -1
                 if j[0] < maxspeed:#スピード制限でなければ
                     j[0] *= 1.1
-            if  i[1]< 0 or i[1] > 600:#弾が画面外にでたら(y軸)
+            if  i[1]< 0 or i[1] > h:#弾が画面外にでたら(y軸)
                 j[1] *= -1
                 if abs(j[1]) < maxspeed:#スピード制限でなければ
                     j[1] *= 1.1
@@ -71,12 +72,12 @@ def main():
         #こうかとんが画面外に出ないための処理
         if tori_rect.left < 0:
             tori_rect.left = 0
-        if tori_rect.right > 1200:
-            tori_rect.right = 1200
+        if tori_rect.right > w:
+            tori_rect.right = w
         if tori_rect.top < 0:
             tori_rect.top = 0
-        if tori_rect.bottom > 600:
-            tori_rect.bottom = 600
+        if tori_rect.bottom > h:
+            tori_rect.bottom = h
 
         for i, j in zip(lis_circle, lis_speed):
             #こうかとんの体力を減らす
