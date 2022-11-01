@@ -6,8 +6,7 @@ from random import randint
 class Screen:
 
     def __init__(self, title, scr_size, background):
-        self.title = title
-        pg.display.set_caption(title)
+        pg.display.set_caption(title) #変更しました
         self.sfc = pg.display.set_mode((scr_size))
         self.rct = self.sfc.get_rect()
         self.back = pg.image.load(background)
