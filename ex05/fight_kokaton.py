@@ -16,6 +16,20 @@ class Screen:
         return self.sfc.blit(self.back, self.back_rct)
 
 
+class Life:
+    pg.init()
+    fonto = pg.font.Font(None, 80)
+
+    def __init__(self, RGB, text_pos, text, text_color, hp):
+        self.life = hp
+        self.RGB = RGB
+        self.pos = text_pos
+        self.txt = self.fonto.render(text, True, text_color)
+
+    def draw_life(self, screen):
+        screen.sfc.blit(self.txt, self.pos)
+        pg.draw.rect(screen.sfc, self.RGB, (1080, 20, self.life, 30))
+
 class Bird:
 
     key_delta = {
@@ -36,12 +50,6 @@ class Bird:
         self.weapon_rct = self.sfc.get_rect() 
 
     #こうかとんの体力をバーとして表示する関数
-    def draw_life(self, screen, RGB, text_size):
-        fonto = pg.font.Font(None, 80)
-        txt = fonto.render("LIFE", True, "BLACK")
-        screen.sfc.blit(txt, text_size)
-        #HPをバーとして表示
-        pg.draw.rect(screen.sfc, RGB, (1080, 20, self.life, 30))
 
     def blit(self, sfc:Screen):
         return sfc.blit(self.sfc, self.rct)
@@ -55,7 +63,7 @@ class Bird:
                 if check_bound(self.rct, screen.rct) != (+1, +1):
                     self.rct.centerx -= delta[0]
                     self.rct.centery -= delta[1]
-        self.draw_life(screen, (0, 255, 0), (930, 10)) #HPの描写
+                
         #武器の座標をこうかとんの座標を基に設定することで武器を動かす。
         self.weapon_rct.center = (self.rct.centerx+50, self.rct.centery-40)
         screen.sfc.blit(self.sfc, self.rct)
@@ -124,10 +132,11 @@ def main():
     bomb2 = Bomb((0, 255, 0), 5, (2, 2), screen, "ex05/fig/enemy.png", 0.05)
     clock = pg.time.Clock()
     item = Item("ex05/fig/Item.png", (x, y), 0.5)
+    life = Life((0, 255, 0), (930, 10), "LIFE", "BLACK", 50)
 
     while True:
         screen.blit()
-
+        life.draw_life(screen)
         for event in pg.event.get(): 
             if event.type == pg.QUIT:
                 return
