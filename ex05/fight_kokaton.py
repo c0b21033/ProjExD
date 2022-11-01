@@ -36,12 +36,12 @@ class Bird:
         self.weapon_rct = self.sfc.get_rect() 
 
     #こうかとんの体力をバーとして表示する関数
-    def draw_life(self, screen):
+    def draw_life(self, screen, RGB, text_size):
         fonto = pg.font.Font(None, 80)
         txt = fonto.render("LIFE", True, "BLACK")
-        screen.sfc.blit(txt, (930, 10))
+        screen.sfc.blit(txt, text_size)
         #HPをバーとして表示
-        pg.draw.rect(screen.sfc, (0, 255, 0), (1080, 20, self.life, 30))
+        pg.draw.rect(screen.sfc, RGB, (1080, 20, self.life, 30))
 
     def blit(self, sfc:Screen):
         return sfc.blit(self.sfc, self.rct)
@@ -55,7 +55,7 @@ class Bird:
                 if check_bound(self.rct, screen.rct) != (+1, +1):
                     self.rct.centerx -= delta[0]
                     self.rct.centery -= delta[1]
-        self.draw_life(screen) #HPの描写
+        self.draw_life(screen, (0, 255, 0), (930, 10)) #HPの描写
         #武器の座標をこうかとんの座標を基に設定することで武器を動かす。
         self.weapon_rct.center = (self.rct.centerx+50, self.rct.centery-40)
         screen.sfc.blit(self.sfc, self.rct)
